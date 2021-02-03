@@ -1,7 +1,7 @@
-const ShowTodo = ({ todos, deleteTodo }) => {
+import TodoElement from "./TodoElement";
+const ShowTodo = ({ todos, deleteTodo, modifyTodo }) => {
   //TODO: Add a minimize view button
 
-  //TODO: Add modify button
   return (
     <div>
       {todos.length === 0 ? (
@@ -11,7 +11,12 @@ const ShowTodo = ({ todos, deleteTodo }) => {
           {todos.map((todo, index) => (
             <ul key={index} className="todo-list">
               <li className="todo-items">
-                <span>{todo}</span>
+                {/* Show/ modify todo item */}
+                <TodoElement
+                  todo={todo}
+                  modifyTodoItem={(newTodo) => modifyTodo(newTodo, index)}
+                />
+                {/* delete button */}
                 <button onClick={() => deleteTodo(index)}>x</button>
               </li>
             </ul>
