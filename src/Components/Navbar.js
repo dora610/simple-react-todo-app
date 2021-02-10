@@ -2,7 +2,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <a href="/" className="brand-name">
-        <h1>my Todo</h1>
+        <h1>myTodo</h1>
       </a>
       <div className="links">
         <a href="/home">Home</a>

@@ -1,4 +1,4 @@
-import { useEffect, useState, localStorage } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 import AddTodo from "./Components/AddTodo";
@@ -8,16 +8,20 @@ import ShowTodo from "./Components/ShowTodo";
 function App() {
   const [todos, setTodos] = useState([]);
 
-  //TODO: Add localstorage
-  /* useEffect(() => {
-    let localStore = localStorage.getItem("todos");
-    if (localStore) {
-      setTodos(JSON.parse(localStore));
+  // Using localStorage
+  // fetch todos from localStorage
+  useEffect(() => {
+    let localTodos = localStorage.getItem("todos");
+    if (localTodos) {
+      setTodos(JSON.parse(localTodos));
     }
   }, []);
+
+  // add todos to localStorage
+  //TODO: modify isn't working
   useEffect(() => {
-    localStorage.setItem("todos", todos);
-  }, [todos]); */
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   const deleteTodo = (index) => {
     let newTodoList = todos.filter((todo) => todos.indexOf(todo) !== index);
